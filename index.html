@@ -1611,9 +1611,12 @@ function go(number){
 
   next.classList.add("active");
 
-  currentScreen = number;
-
+if(number === 2 && !musicPlaying){
+  toggleMusic();
 }
+
+currentScreen = number;
+
 
 
 /* ================= NO THANK YOU ================= */
