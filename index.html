@@ -1072,7 +1072,7 @@ button{
 
       <button
         class="btn primary"
-        onclick="go(2)"
+        onclick="go(2)"; startMusic()"
       >
         YES PLEASE
       </button>
@@ -1609,13 +1609,14 @@ function go(number){
     current.classList.remove("exit");
   },700);
 
+
+  
   next.classList.add("active");
 
-if(number === 2 && !musicPlaying){
-  toggleMusic();
-}
 
-currentScreen = number;
+  
+  currentScreen = number;
+}
 
 
 
@@ -1657,17 +1658,14 @@ function closeNo(event){
 
 let musicPlaying = false;
 
-let audio =
-  new Audio("Huzoor Mera - Rochak Kohli _ Hindi.mp3");
+let audio = new Audio("Huzoor Mera - Rochak Kohli _ Hindi.mp3");
 
 audio.loop = true;
 audio.volume = 0.55;
 
-
 function toggleMusic(){
 
-  const button =
-    document.getElementById("music1");
+  const button = document.getElementById("music1");
 
   if(!musicPlaying){
 
@@ -1685,11 +1683,6 @@ function toggleMusic(){
 
         console.log("Music error:", error);
 
-        alert(
-          "Music file nahi mil rahi. " +
-          "MP3 aur index.html same folder mein rakho."
-        );
-
       });
 
   }else{
@@ -1703,8 +1696,32 @@ function toggleMusic(){
     }
 
   }
+}
+
+function startMusic(){
+
+  if(musicPlaying) return;
+
+  audio.play()
+    .then(() => {
+
+      musicPlaying = true;
+
+      const button = document.getElementById("music1");
+
+      if(button){
+        button.innerHTML = "♫";
+      }
+
+    })
+    .catch((error) => {
+
+      console.log("Music error:", error);
+
+    });
 
 }
+
 
 
 /* ================= ESCAPE ================= */
