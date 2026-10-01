@@ -171,8 +171,6 @@ button{
   }
 }
 
-/* glowing background */
-
 .glow{
   position:absolute;
   width:180px;
@@ -386,7 +384,7 @@ button{
   border:1px solid #eccbd4;
 }
 
-/* ================= CAT STICKER ================= */
+/* ================= CAT ================= */
 
 .cat-sticker{
   position:absolute;
@@ -572,6 +570,7 @@ button{
   0%,100%{
     transform:translateY(0);
   }
+
   50%{
     transform:translateY(-7px);
   }
@@ -811,6 +810,7 @@ button{
 .memories{
   background:#fae7eb;
   overflow:auto;
+  padding:70px 0 40px;
 }
 
 .memories h2{
@@ -821,11 +821,20 @@ button{
   margin-bottom:22px;
 }
 
+.memories-sub{
+  text-align:center;
+  font-family:"Playfair Display",serif;
+  font-style:italic;
+  color:#765761;
+  font-size:14px;
+  margin:-10px 0 20px;
+}
+
 .grid{
   width:min(92vw,650px);
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:12px;
+  gap:14px;
 }
 
 .tile{
@@ -842,25 +851,11 @@ button{
   transform:translateY(-5px) rotate(-1deg);
 }
 
-.tile .art{
+.tile img{
   width:100%;
   height:100%;
-  display:grid;
-  place-items:center;
-  font-size:55px;
-  background:linear-gradient(135deg,#f7c5d0,#f7e9dc);
-}
-
-.tile:nth-child(2) .art{
-  background:linear-gradient(135deg,#f6d7b4,#f3abbc);
-}
-
-.tile:nth-child(3) .art{
-  background:linear-gradient(135deg,#d8e6f3,#f8cbd8);
-}
-
-.tile:nth-child(4) .art{
-  background:linear-gradient(135deg,#e7d1e9,#f7e5c9);
+  object-fit:cover;
+  display:block;
 }
 
 .tile span{
@@ -868,10 +863,62 @@ button{
   bottom:13px;
   left:14px;
   background:#fffdf9dd;
-  padding:4px 8px;
+  padding:5px 9px;
   font-size:9px;
   font-weight:700;
   color:#754c58;
+  border-radius:10px;
+}
+
+/* ================= FINAL ================= */
+
+.final{
+  background:
+    radial-gradient(circle at 20% 20%,#f7c6d3 0 2px,transparent 3px),
+    linear-gradient(135deg,#fff9f5,#fae4ea,#fff8f2);
+}
+
+.final-card{
+  width:min(90vw,600px);
+  text-align:center;
+  background:#fffdf9ee;
+  padding:45px 25px;
+  border:1px solid #efd2da;
+  box-shadow:0 20px 50px #8b5a4b20;
+  position:relative;
+  z-index:4;
+}
+
+.final-card h2{
+  font-family:Pacifico,cursive;
+  color:#a93652;
+  font-size:40px;
+}
+
+.final-card .heart{
+  font-size:45px;
+  animation:heartBeat 1.4s infinite;
+  margin:10px 0;
+}
+
+@keyframes heartBeat{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.15);}
+}
+
+.final-card p{
+  font-family:"Playfair Display",serif;
+  color:#594047;
+  font-size:16px;
+  line-height:1.6;
+  margin-top:15px;
+}
+
+.final-name{
+  font-family:Pacifico,cursive;
+  color:#d13e62;
+  font-size:28px;
+  margin-top:22px;
 }
 
 /* ================= BACK BUTTON ================= */
@@ -925,6 +972,22 @@ button{
   .cat-sticker img{
     border-radius:15px;
   }
+
+  .grid{
+    gap:10px;
+  }
+
+  .memories{
+    padding-top:60px;
+  }
+
+  .memories h2{
+    font-size:32px;
+  }
+
+  .final-card h2{
+    font-size:34px;
+  }
 }
 </style>
 </head>
@@ -933,7 +996,9 @@ button{
 
 <div class="app">
 
-<!-- ================= PAGE 1 ================= -->
+<!-- ================================================= -->
+<!-- PAGE 1 : LANDING -->
+<!-- ================================================= -->
 
 <section class="screen active landing grain" id="s1">
 
@@ -963,6 +1028,7 @@ button{
       class="music-dot"
       id="music1"
       aria-label="Music"
+      onclick="toggleMusic()"
     >
       ♪
     </button>
@@ -1022,7 +1088,7 @@ button{
 
   </div>
 
-  <!-- CAT STICKER -->
+  <!-- CAT PHOTO -->
   <div class="cat-sticker">
 
     <img
@@ -1035,7 +1101,9 @@ button{
 </section>
 
 
-<!-- ================= NO THANK YOU POPUP ================= -->
+<!-- ================================================= -->
+<!-- NO THANK YOU POPUP -->
+<!-- ================================================= -->
 
 <div
   class="reaction"
@@ -1073,7 +1141,9 @@ button{
 </div>
 
 
-<!-- ================= PAGE 2 ================= -->
+<!-- ================================================= -->
+<!-- PAGE 2 : COVER -->
+<!-- ================================================= -->
 
 <section class="screen cover grain" id="s2">
 
@@ -1102,7 +1172,7 @@ button{
       Happy Birthday
     </div>
 
-    <div class="name" id="name1">
+    <div class="name">
       Tushar ♡
     </div>
 
@@ -1128,7 +1198,9 @@ button{
 </section>
 
 
-<!-- ================= PAGE 3 ================= -->
+<!-- ================================================= -->
+<!-- PAGE 3 : AGE -->
+<!-- ================================================= -->
 
 <section class="screen age grain" id="s3">
 
@@ -1144,7 +1216,7 @@ button{
   <div class="center">
 
     <div class="age-title">
-      CHAPTER <span id="ageTitle">21</span>
+      CHAPTER <span>21</span>
     </div>
 
     <div class="age-card">
@@ -1159,10 +1231,7 @@ button{
         LUCKY TO HAVE YOU
       </div>
 
-      <div
-        class="age-number"
-        id="ageNum"
-      >
+      <div class="age-number">
         21
       </div>
 
@@ -1184,7 +1253,9 @@ button{
 </section>
 
 
-<!-- ================= PAGE 4 ================= -->
+<!-- ================================================= -->
+<!-- PAGE 4 : LETTER ENVELOPE -->
+<!-- ================================================= -->
 
 <section class="screen letter-bg grain" id="s4">
 
@@ -1205,13 +1276,7 @@ button{
     >
 
       <div class="letter-label">
-
-        For you,
-        <span id="name2">
-          Tushar
-        </span>
-        ♡
-
+        For you, Tushar ♡
       </div>
 
       <div class="seal">
@@ -1225,7 +1290,9 @@ button{
 </section>
 
 
-<!-- ================= PAGE 5 ================= -->
+<!-- ================================================= -->
+<!-- PAGE 5 : LETTER -->
+<!-- ================================================= -->
 
 <section class="screen message grain" id="s5">
 
@@ -1257,40 +1324,34 @@ button{
       and everything you've been wishing for.
     </p>
 
-        <p>
+    <p>
       Keep being the wonderful person you are, Tushar.
-      You deserve all the happiness, love, success and
-      beautiful moments this world has to offer.
+      Keep smiling, keep growing, and keep making
+      beautiful memories wherever you go.
     </p>
 
     <p>
-      And yes... you are officially 21 now! ♡
-      So here's to a brand-new chapter filled with
-      adventures, dreams coming true, random laughs,
-      unforgettable memories and lots of happiness.
+      And yes... today you're officially 21!
+      So here's to another year of adventures,
+      laughter, happiness and all the little moments
+      that make life special.
     </p>
 
     <p>
-      No matter how much life changes, I hope you always
-      remember how special you are. Keep smiling, keep
-      chasing your dreams and never stop being you.
-    </p>
-
-    <p>
-      Happy 21st Birthday, Jaanu. ♡
-      I hope this little surprise makes your day
-      even a tiny bit more special.
+      I'm really happy that I get to celebrate this
+      little moment with you. You deserve a birthday
+      as special as you are, Jaanu. ♡
     </p>
 
     <div class="signature">
-      Always yours ♡
+      Always cheering for you ♡
     </div>
 
     <button
       class="btn primary mem-btn"
       onclick="go(6)"
     >
-      OUR LITTLE MEMORIES ♡
+      OUR MEMORIES ♡
     </button>
 
   </div>
@@ -1298,7 +1359,9 @@ button{
 </section>
 
 
-<!-- ================= PAGE 6 ================= -->
+<!-- ================================================= -->
+<!-- PAGE 6 : MEMORIES -->
+<!-- ================================================= -->
 
 <section class="screen memories grain" id="s6">
 
@@ -1315,68 +1378,96 @@ button{
       Little Memories ♡
     </h2>
 
+    <div class="memories-sub">
+      four little pieces of a beautiful story...
+    </div>
+
     <div class="grid">
 
-      <div class="tile">
-        <div class="art">
-          📸
-        </div>
-        <span>
-          moments worth keeping
-        </span>
-      </div>
+      <!-- PHOTO 1 -->
 
       <div class="tile">
-        <div class="art">
-          🫶🏻
-        </div>
+
+        <img
+          src="IMG_20261002_001317_058.jpg"
+          alt="Memory 1"
+        >
+
         <span>
-          the sweetest memories
+          A little moment ♡
         </span>
+
       </div>
 
-      <div class="tile">
-        <div class="art">
-          🌙
-        </div>
-        <span>
-          late night talks
-        </span>
-      </div>
+
+      <!-- PHOTO 2 -->
 
       <div class="tile">
-        <div class="art">
-          🎂
-        </div>
+
+        <img
+          src="IMG_20261002_001311_282.jpg"
+          alt="Memory 2"
+        >
+
         <span>
-          your special day
+          One to remember ♡
         </span>
+
+      </div>
+
+
+      <!-- PHOTO 3 -->
+
+      <div class="tile">
+
+        <img
+          src="IMG_20261002_001255_114.jpg"
+          alt="Memory 3"
+        >
+
+        <span>
+          Another little memory ♡
+        </span>
+
+      </div>
+
+
+      <!-- PHOTO 4 -->
+
+      <div class="tile">
+
+        <img
+          src="IMG_20261002_001251_091.jpg"
+          alt="Memory 4"
+        >
+
+        <span>
+          Forever special ♡
+        </span>
+
       </div>
 
     </div>
 
-    <div class="actions">
 
-      <button
-        class="btn primary"
-        onclick="go(7)"
-      >
-        ONE LAST THING ♡
-      </button>
-
-    </div>
+    <button
+      class="btn primary"
+      style="margin-top:25px;"
+      onclick="go(7)"
+    >
+      ONE LAST THING ♡
+    </button>
 
   </div>
 
 </section>
 
 
-<!-- ================= PAGE 7 ================= -->
+<!-- ================================================= -->
+<!-- PAGE 7 : FINAL -->
+<!-- ================================================= -->
 
-<section
-  class="screen landing grain"
-  id="s7"
->
+<section class="screen final grain" id="s7">
 
   <div class="live-bg">
 
@@ -1389,38 +1480,48 @@ button{
     <span class="spark">✧</span>
     <span class="spark">♥</span>
     <span class="spark">✦</span>
+    <span class="spark">♡</span>
+    <span class="spark">✧</span>
 
   </div>
 
-  <div class="center">
+
+  <div class="final-card">
 
     <div class="kicker">
-      And before you go...
+      one last little message...
     </div>
 
-    <div class="big">
-      HAPPY<br>
-      BIRTHDAY.
+    <h2>
+      Happy 21st, Tushar ♡
+    </h2>
+
+    <div class="heart">
+      ♥
     </div>
 
-    <div class="script">
-      Tushar ♡
+    <p>
+      May this year bring you happiness that stays,
+      moments that become memories, and dreams
+      that slowly turn into reality.
+    </p>
+
+    <p>
+      Keep smiling, keep shining and keep being
+      exactly the amazing person you are.
+    </p>
+
+    <div class="final-name">
+      Love you, Jaanu ♡
     </div>
 
-    <div class="sub">
-      21 looks like another beautiful beginning, Jaanu.
-    </div>
-
-    <div class="actions">
-
-      <button
-        class="btn primary"
-        onclick="go(1)"
-      >
-        START AGAIN ♡
-      </button>
-
-    </div>
+    <button
+      class="btn primary"
+      style="margin-top:28px;"
+      onclick="go(1)"
+    >
+      START AGAIN ♡
+    </button>
 
   </div>
 
@@ -1430,133 +1531,134 @@ button{
 </div>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- ================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ================================================= -->
 
 <script>
 
-let current = 1;
+let currentScreen = 1;
 
 
-/* ================= PAGE NAVIGATION ================= */
+/* ================= SCREEN CHANGE ================= */
 
-function go(page){
+function go(number){
 
-  const oldScreen =
-    document.getElementById("s" + current);
+  const current =
+    document.getElementById("s" + currentScreen);
 
-  const newScreen =
-    document.getElementById("s" + page);
+  const next =
+    document.getElementById("s" + number);
 
-  if(!newScreen) return;
+  if(!next) return;
 
-  oldScreen.classList.remove("active");
-  oldScreen.classList.add("exit");
+  current.classList.remove("active");
+  current.classList.add("exit");
 
   setTimeout(() => {
-
-    oldScreen.classList.remove("exit");
-
+    current.classList.remove("exit");
   },700);
 
-  newScreen.classList.add("active");
+  next.classList.add("active");
 
-  current = page;
+  currentScreen = number;
 
 }
 
 
-/* ================= NO BUTTON ================= */
+/* ================= NO THANK YOU ================= */
 
 function showNo(){
 
-  document
-    .getElementById("reaction")
-    .classList.add("show");
+  const popup =
+    document.getElementById("reaction");
 
-}
-
-function closeNo(event){
-
-  if(
-    !event ||
-    event.target.id === "reaction"
-  ){
-
-    document
-      .getElementById("reaction")
-      .classList.remove("show");
-
+  if(popup){
+    popup.classList.add("show");
   }
 
 }
 
 
-/* ================= PERSONAL DETAILS ================= */
+function closeNo(event){
 
-const birthdayName = "Tushar";
-const birthdayAge = "21";
+  if(event &&
+     event.target &&
+     event.target.id !== "reaction"){
+    return;
+  }
 
+  const popup =
+    document.getElementById("reaction");
 
-document.getElementById("name1").textContent =
-  birthdayName + " ♡";
+  if(popup){
+    popup.classList.remove("show");
+  }
 
-document.getElementById("name2").textContent =
-  birthdayName;
-
-document.getElementById("ageTitle").textContent =
-  birthdayAge;
-
-document.getElementById("ageNum").textContent =
-  birthdayAge;
+}
 
 
 /* ================= MUSIC ================= */
 
-let audio = null;
 let musicPlaying = false;
+let audio = null;
 
-document
-  .getElementById("music1")
-  .addEventListener("click",function(){
 
-    if(!audio){
+/*
+  IMPORTANT:
+  Agar music file add karni hai,
+  same folder me "birthday-music.mp3"
+  naam se rakho.
+*/
 
-      audio = new Audio("music.mp3");
+function toggleMusic(){
 
-      audio.loop = true;
-      audio.volume = 0.45;
+  if(!audio){
 
+    audio = new Audio("birthday-music.mp3");
+
+    audio.loop = true;
+    audio.volume = 0.55;
+
+  }
+
+  const button =
+    document.getElementById("music1");
+
+  if(!musicPlaying){
+
+    audio.play()
+      .then(() => {
+
+        musicPlaying = true;
+
+        if(button){
+          button.innerHTML = "♫";
+        }
+
+      })
+      .catch(() => {
+
+        alert(
+          "Music start nahi ho paayi. " +
+          "birthday-music.mp3 ko HTML ke same folder me rakho."
+        );
+
+      });
+
+  }else{
+
+    audio.pause();
+
+    musicPlaying = false;
+
+    if(button){
+      button.innerHTML = "♪";
     }
 
-    if(!musicPlaying){
+  }
 
-      audio.play()
-        .then(() => {
-
-          musicPlaying = true;
-
-          this.textContent = "♫";
-
-        })
-        .catch(() => {
-
-          alert(
-            "Add your music file as music.mp3 in the same folder."
-          );
-
-        });
-
-    }else{
-
-      audio.pause();
-
-      musicPlaying = false;
-
-      this.textContent = "♪";
-
-    }
-
-  });
+}
 
 
 /* ================= KEYBOARD SUPPORT ================= */
@@ -1567,9 +1669,12 @@ document.addEventListener(
 
     if(e.key === "Escape"){
 
-      document
-        .getElementById("reaction")
-        .classList.remove("show");
+      const popup =
+        document.getElementById("reaction");
+
+      if(popup){
+        popup.classList.remove("show");
+      }
 
     }
 
@@ -1579,5 +1684,4 @@ document.addEventListener(
 </script>
 
 </body>
-</html>
- 
+      </html>
