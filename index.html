@@ -1204,10 +1204,7 @@ button{
 
 <section class="screen age grain" id="s3">
 
-  <button
-    class="back"
-    onclick="go(2)"
-  >
+  <button class="back" onclick="go(2)">
     ‹ BACK
   </button>
 
@@ -1221,13 +1218,11 @@ button{
 
     <div class="age-card">
 
-      <div
-        style="
+      <div style="
         font-size:10px;
         letter-spacing:2px;
         color:#a15a68;
-        "
-      >
+      ">
         LUCKY TO HAVE YOU
       </div>
 
@@ -1241,10 +1236,7 @@ button{
 
     </div>
 
-    <button
-      class="btn secondary"
-      onclick="go(4)"
-    >
+    <button class="btn secondary" onclick="go(4)">
       OPEN THE LETTER
     </button>
 
@@ -1259,10 +1251,7 @@ button{
 
 <section class="screen letter-bg grain" id="s4">
 
-  <button
-    class="back"
-    onclick="go(3)"
-  >
+  <button class="back" onclick="go(3)">
     ‹ BACK
   </button>
 
@@ -1296,10 +1285,7 @@ button{
 
 <section class="screen message grain" id="s5">
 
-  <button
-    class="back"
-    onclick="go(4)"
-  >
+  <button class="back" onclick="go(4)">
     ‹ BACK
   </button>
 
@@ -1365,10 +1351,7 @@ button{
 
 <section class="screen memories grain" id="s6">
 
-  <button
-    class="back"
-    onclick="go(5)"
-  >
+  <button class="back" onclick="go(5)">
     ‹ BACK
   </button>
 
@@ -1385,7 +1368,6 @@ button{
     <div class="grid">
 
       <!-- PHOTO 1 -->
-
       <div class="tile">
 
         <img
@@ -1401,7 +1383,6 @@ button{
 
 
       <!-- PHOTO 2 -->
-
       <div class="tile">
 
         <img
@@ -1417,7 +1398,6 @@ button{
 
 
       <!-- PHOTO 3 -->
-
       <div class="tile">
 
         <img
@@ -1433,7 +1413,6 @@ button{
 
 
       <!-- PHOTO 4 -->
-
       <div class="tile">
 
         <img
@@ -1464,7 +1443,83 @@ button{
 
 
 <!-- ================================================= -->
-<!-- PAGE 7 : FINAL -->
+<!-- PAGE 7 :  SURPRISE -->
+<!-- ================================================= -->
+
+<section class="screen final grain" id="s7">
+
+  <div class="live-bg">
+
+    <div class="glow g1"></div>
+    <div class="glow g2"></div>
+
+    <span class="spark">♡</span>
+    <span class="spark">✦</span>
+    <span class="spark">♡</span>
+    <span class="spark">✧</span>
+    <span class="spark">♥</span>
+    <span class="spark">✦</span>
+    <span class="spark">♡</span>
+    <span class="spark">✧</span>
+
+  </div>
+
+
+  <div class="final-card">
+
+    <div class="kicker">
+      one last little message...
+    </div>
+
+    <h2>
+      A Surprise For You ♡
+    </h2>
+
+    <div class="heart">
+      ♥
+    </div>
+
+    <p>
+      Tushar Jaanu, sach bolu toh ye chhota sa surprise
+      banate waqt bas ek hi thought tha ki tumhare face
+      pe ek genuine si smile aa jaye. ♡
+    </p>
+
+    <p>
+      Tumhari life ka ye new chapter bohot saari khushiyan,
+      naye memories aur beautiful moments lekar aaye.
+      Bas aise hi khush rehna, apne dreams ke peeche jaana
+      aur kabhi mat bhoolna ki tum bohot special ho.
+    </p>
+
+    <p>
+      Happy 21st Birthday, Jaanu! ♡
+      Here's to more laughter, more memories and
+      many many beautiful moments ahead.
+    </p>
+
+    <div class="final-name">
+      Love you, Jaanu ♡
+    </div>
+
+    <button
+      class="btn primary"
+      style="margin-top:28px;"
+      onclick="go(1)"
+    >
+      START AGAIN ♡
+    </button>
+
+  </div>
+
+</section>
+
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- PAGE 8 : FINAL -->
 <!-- ================================================= -->
 
 <section class="screen final grain" id="s7">
@@ -1529,8 +1584,8 @@ button{
 
 
 </div>
-
-
+  
+  
 <!-- ================================================= -->
 <!-- JAVASCRIPT -->
 <!-- ================================================= -->
@@ -1582,9 +1637,11 @@ function showNo(){
 
 function closeNo(event){
 
-  if(event &&
-     event.target &&
-     event.target.id !== "reaction"){
+  if(
+    event &&
+    event.target &&
+    event.target.id !== "reaction"
+  ){
     return;
   }
 
@@ -1603,19 +1660,13 @@ function closeNo(event){
 let musicPlaying = false;
 let audio = null;
 
-
-/*
-  IMPORTANT:
-  Agar music file add karni hai,
-  same folder me "birthday-music.mp3"
-  naam se rakho.
-*/
-
 function toggleMusic(){
 
   if(!audio){
 
-    audio = new Audio("birthday-music.mp3");
+    audio = new Audio(
+      "Huzoor Mera - Rochak Kohli _ Hindi.mp3"
+    );
 
     audio.loop = true;
     audio.volume = 0.55;
@@ -1639,10 +1690,7 @@ function toggleMusic(){
       })
       .catch(() => {
 
-        alert(
-          "Music start nahi ho paayi. " +
-          "birthday-music.mp3 ko HTML ke same folder me rakho."
-        );
+        alert("Music start nahi ho paayi.");
 
       });
 
@@ -1684,4 +1732,8 @@ document.addEventListener(
 </script>
 
 </body>
-      </html>
+</html>
+
+      
+            
+      
