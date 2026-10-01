@@ -1028,7 +1028,7 @@ button{
       class="music-dot"
       id="music1"
       aria-label="Music"
-      onclick="toggleMusic(audio = new Audio("Huzoor Mera - Rochak Kohli _ Hindi.mp3");)"
+      onclick="toggleMusic()"
     >
       ♪
     </button>
@@ -1594,9 +1594,6 @@ button{
 
 let currentScreen = 1;
 
-
-/* ================= SCREEN CHANGE ================= */
-
 function go(number){
 
   const current =
@@ -1658,18 +1655,15 @@ function closeNo(event){
 /* ================= MUSIC ================= */
 
 let musicPlaying = false;
-let audio = null;
+
+let audio =
+  new Audio("Huzoor Mera - Rochak Kohli _ Hindi.mp3");
+
+audio.loop = true;
+audio.volume = 0.55;
+
 
 function toggleMusic(){
-
-  if(!audio){
-
-    audio = new Audio("Huzoor Mera - Rochak Kohli _ Hindi.mp3 );
-
-    audio.loop = true;
-    audio.volume = 0.55;
-
-  }
 
   const button =
     document.getElementById("music1");
@@ -1686,9 +1680,14 @@ function toggleMusic(){
         }
 
       })
-      .catch(() => {
+      .catch((error) => {
 
-        alert("Music start nahi ho paayi.");
+        console.log("Music error:", error);
+
+        alert(
+          "Music file nahi mil rahi. " +
+          "MP3 aur index.html same folder mein rakho."
+        );
 
       });
 
@@ -1707,7 +1706,7 @@ function toggleMusic(){
 }
 
 
-/* ================= KEYBOARD SUPPORT ================= */
+/* ================= ESCAPE ================= */
 
 document.addEventListener(
   "keydown",
@@ -1728,7 +1727,6 @@ document.addEventListener(
 );
 
 </script>
-
 </body>
 </html>
 
